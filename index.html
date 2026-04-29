@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Kinderamt – Abt. ZGB – Sachgebiet 4c – Referat 12b – Unterabteilung Raumordnung – Zimmergestaltung</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Courier New', monospace; font-size: 12px; background: #d4d0c8; color: #000; }
+a { color: #00008b; text-decoration: underline; cursor: pointer; }
+a:hover { color: #cc0000; }
+
+.topbar { background: #003366; color: #fff; padding: 3px 10px; font-size: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
+.topbar a { color: #ffcc00; font-size: 10px; }
+
+.header { background: #004080; padding: 10px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 4px solid #ffcc00; }
+.header-logo { width: 64px; height: 64px; background: #fff; border: 2px solid #ffcc00; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+.header-text h1 { color: #fff; font-size: 12px; font-weight: bold; line-height: 1.4; }
+.header-text p { color: #aaccff; font-size: 9px; margin-top: 2px; }
+
+.nav { background: #002255; display: flex; flex-wrap: wrap; border-bottom: 2px solid #ffcc00; }
+.nav a { color: #cce0ff; font-size: 10px; padding: 6px 10px; text-decoration: none; border-right: 1px solid #003580; display: block; }
+.nav a:hover { background: #003580; color: #fff; }
+.nav a.active { background: #ffcc00; color: #002255; font-weight: bold; }
+.nav a.broken { color: #ff9999; text-decoration: line-through; }
+.nav a.broken:hover { background: transparent; color: #ff9999; cursor: not-allowed; }
+
+.breadcrumb { background: #c8c4b8; padding: 3px 10px; font-size: 10px; color: #444; border-bottom: 1px solid #aaa; }
+
+.layout { display: flex; min-height: 600px; }
+
+.sidebar { width: 190px; min-width: 190px; background: #e8e4d8; border-right: 1px solid #aaa; }
+.sidebar-section { border-bottom: 1px solid #aaa; }
+.sidebar-title { background: #003366; color: #fff; padding: 5px 8px; font-size: 10px; font-weight: bold; }
+.sidebar a { display: block; padding: 4px 8px; font-size: 10px; border-bottom: 1px dotted #bbb; text-decoration: none; color: #00008b; }
+.sidebar a:hover { background: #d4d0c4; }
+.sidebar a.sub { padding-left: 16px; font-size: 9px; color: #444; }
+.sidebar a.sub2 { padding-left: 24px; font-size: 9px; color: #777; }
+.sidebar a.broken { color: #cc0000; text-decoration: line-through; font-size: 9px; }
+.sidebar .warning { background: #ffe8e8; padding: 4px 8px; font-size: 9px; color: #cc0000; border-bottom: 1px dotted #bbb; }
+.sidebar .info { background: #fffbcc; padding: 4px 8px; font-size: 9px; color: #886600; border-bottom: 1px dotted #bbb; }
+
+.content { flex: 1; padding: 12px 16px; background: #f0ece0; overflow: hidden; }
+.page { display: none; }
+.page.active { display: block; }
+
+h2 { font-size: 13px; color: #002255; border-bottom: 2px solid #003366; padding-bottom: 4px; margin-bottom: 10px; font-weight: bold; }
+h3 { font-size: 11px; color: #003366; margin: 12px 0 4px; font-weight: bold; }
+p { font-size: 10px; line-height: 1.6; margin-bottom: 6px; }
+
+.notice { padding: 8px; margin-bottom: 10px; font-size: 10px; line-height: 1.6; }
+.notice.yellow { background: #fffbcc; border: 1px solid #e6c800; border-left: 4px solid #ffcc00; }
+.notice.red { background: #ffe8e8; border: 1px solid #cc0000; border-left: 4px solid #cc0000; }
+.notice.blue { background: #e8f0ff; border: 1px solid #6699cc; border-left: 4px solid #003366; }
+.notice.green { background: #e8ffe8; border: 1px solid #006600; border-left: 4px solid #006600; }
+.notice strong { font-weight: bold; }
+.notice.red strong { color: #cc0000; }
+
+.error-page { text-align: center; padding: 40px 20px; }
+.error-code { font-size: 48px; font-weight: bold; color: #cc0000; }
+.error-msg { font-size: 14px; color: #003366; margin: 10px 0; }
+.error-sub { font-size: 10px; color: #777; line-height: 1.8; }
+
+.step-box { background: #fff; border: 1px solid #bbb; padding: 8px; margin-bottom: 6px; font-size: 10px; line-height: 1.6; }
+.step-num { display: inline-block; background: #003366; color: #fff; width: 18px; height: 18px; text-align: center; line-height: 18px; font-size: 9px; margin-right: 6px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 10px; margin: 8px 0; }
+th { background: #003366; color: #fff; padding: 4px 6px; text-align: left; }
+td { border: 1px solid #bbb; padding: 4px 6px; }
+tr:nth-child(even) { background: #e8e4d8; }
+
+.form-group { margin-bottom: 8px; }
+.form-group label { display: block; font-size: 10px; color: #333; margin-bottom: 2px; font-weight: bold; }
+.form-group input, .form-group select, .form-group textarea { font-size: 10px; padding: 3px 5px; border: 1px solid #999; background: #fff; font-family: 'Courier New', monospace; width: 100%; max-width: 300px; }
+.form-group input:disabled, .form-group select:disabled { background: #ddd; color: #999; cursor: not-allowed; }
+.form-group .hint { font-size: 9px; color: #777; margin-top: 2px; }
+.required { color: #cc0000; }
+
+.btn { background: #003366; color: #fff; border: none; padding: 6px 14px; font-size: 10px; font-family: 'Courier New', monospace; cursor: pointer; margin-top: 6px; }
+.btn:hover { background: #004499; }
+.btn:disabled { background: #888; cursor: not-allowed; }
+.btn-secondary { background: #888; margin-left: 6px; }
+.btn-danger { background: #cc0000; }
+
+.captcha-box { background: #e0ddd5; border: 1px solid #999; padding: 8px; font-size: 10px; margin: 8px 0; max-width: 320px; }
+.captcha-img { font-family: 'Courier New', monospace; font-size: 20px; font-weight: bold; color: #333; letter-spacing: 10px; background: repeating-linear-gradient(37deg, #bbb, #bbb 2px, #e0ddd5 2px, #e0ddd5 9px); padding: 8px 12px; display: inline-block; filter: blur(0.8px) contrast(0.8); transform: skew(-3deg); user-select: none; }
+
+.status-box { background: #fff; border: 1px solid #bbb; padding: 10px; font-size: 10px; }
+.status-row { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 4px 0; gap: 12px; }
+.status-pending { color: #cc8800; font-weight: bold; }
+.status-missing { color: #cc0000; font-weight: bold; }
+.status-ok { color: #006600; font-weight: bold; }
+
+.hotline-box { background: #fff; border: 2px solid #003366; padding: 10px; max-width: 380px; margin: 8px 0; }
+.hotline-number { font-size: 16px; font-weight: bold; color: #003366; letter-spacing: 1px; }
+
+.popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #f0ece0; border: 2px solid #003366; padding: 16px; width: 360px; z-index: 999; box-shadow: 4px 4px 0 #888; }
+.popup.active { display: block; }
+.popup-title { background: #003366; color: #fff; padding: 4px 8px; font-size: 11px; font-weight: bold; margin: -16px -16px 12px; display: flex; justify-content: space-between; }
+.popup-title span { cursor: pointer; }
+.popup p { font-size: 10px; line-height: 1.6; margin-bottom: 6px; }
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+.overlay.active { display: block; }
+
+.cookie-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #002255; color: #fff; padding: 10px 16px; font-size: 10px; z-index: 997; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.cookie-bar a { color: #ffcc00; }
+
+.scroll-ticker { background: #ffcc00; color: #002255; font-size: 10px; font-weight: bold; padding: 3px 0; overflow: hidden; white-space: nowrap; }
+.scroll-ticker-inner { display: inline-block; animation: ticker 30s linear infinite; }
+@keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+
+.footer { background: #002255; color: #99b3cc; font-size: 9px; padding: 8px 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; border-top: 2px solid #ffcc00; }
+.footer a { color: #99b3cc; }
+
+.important { color: #cc0000; font-weight: bold; }
+.tag { display: inline-block; background: #cc0000; color: #fff; font-size: 8px; padding: 1px 4px; margin-left: 3px; vertical-align: middle; }
+.tag.new { background: #006600; }
+.tag.updated { background: #cc8800; }
+.tag.broken { background: #888; }
+
+.progress-bar { background: #ddd; border: 1px solid #999; height: 14px; margin: 4px 0; position: relative; }
+.progress-fill { background: #003366; height: 100%; }
+.progress-label { position: absolute; top: 0; left: 4px; font-size: 9px; color: #fff; line-height: 14px; }
+
+.maintenance { background: repeating-linear-gradient(45deg, #ffe8e8, #ffe8e8 10px, #fff 10px, #fff 20px); border: 2px solid #cc0000; padding: 12px; text-align: center; font-size: 11px; color: #cc0000; font-weight: bold; margin: 10px 0; }
+
+.blink { animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.counter-box { background: #fff; border: 1px solid #bbb; padding: 8px; font-size: 10px; margin: 8px 0; display: inline-block; }
+
+.misaligned { margin-left: 47px; }
+.misaligned2 { margin-left: -12px; }
+
+.table-overflow { overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<!-- COOKIE BAR -->
+<div class="cookie-bar" id="cookie-bar">
+  <span>🍪 Diese Website verwendet Cookies. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies gemäß unserer <a onclick="showPopup('datenschutz')">Datenschutzerklärung</a> (34 Seiten, PDF, nur per Post erhältlich) zu. <span class="blink">■</span></span>
+  <div style="display:flex;gap:6px;flex-shrink:0;">
+    <button class="btn" onclick="showPopup('cookies')">Einstellungen</button>
+    <button class="btn" style="background:#006600;" onclick="document.getElementById('cookie-bar').style.display='none'">Alle akzeptieren</button>
+    <button class="btn btn-danger" onclick="showPopup('cookies-ablehnen')">Ablehnen</button>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="scroll-ticker">
+  <span class="scroll-ticker-inner">
+    ⚠ WARTUNGSHINWEIS: Online-Terminbuchung derzeit nicht verfügbar &nbsp;|&nbsp; 
+    ⚠ Neues Pflichtformular KA-ZGB-17d seit 01.03.2024 &nbsp;|&nbsp; 
+    ⚠ Telefonzeiten Di+Do 11:30–11:35 Uhr &nbsp;|&nbsp; 
+    ⚠ Frau Müller-Brinkmann derzeit in Elternzeit &nbsp;|&nbsp; 
+    ⚠ Gebührenerhöhung rückwirkend ab 01.11.2023 &nbsp;|&nbsp;
+    ⚠ Bearbeitungszeit aktuell 14–20 Wochen &nbsp;|&nbsp;
+    ⚠ Seite optimiert für Internet Explorer 6.0 &nbsp;|&nbsp;
+    ⚠ WARTUNGSHINWEIS: Online-Terminbuchung derzeit nicht verfügbar &nbsp;|&nbsp;
+  </span>
+</div>
+
+<div class="topbar">
+  <span>Kinderamt | Abteilung ZGB | Sachgebiet 4c | Referat 12b | Unterabteilung Raumordnung | Stand: 2011</span>
+  <span>
+    Schriftgröße: <a onclick="showPopup('schrift')">A</a> <a onclick="showPopup('schrift')">A+</a> <a onclick="showPopup('schrift')">A++</a> 
+    &nbsp;|&nbsp; <a onclick="showPopup('drucken')">Drucken</a> 
+    &nbsp;|&nbsp; <a onclick="showPage('sitemap')">Sitemap</a> 
+    &nbsp;|&nbsp; <a onclick="showPage('kontakt')">Kontakt</a>
+    &nbsp;|&nbsp; <a onclick="showPopup('sprache')">Sprache: DE ▾</a>
+  </span>
+</div>
+
+<div class="header">
+  <div class="header-logo">🏛️</div>
+  <div class="header-text">
+    <h1>KINDERAMT – ABTEILUNG ZIMMERGESTALTUNG UND BAULICHE VERÄNDERUNGSMAßNAHMEN IM KINDERZIMMER<br>
+    Sachgebiet 4c | Referat Kinderzimmer | Unterabteilung Raumordnung | Fachbereich Innenraumplanung | Zuständigkeitsbereich Papa</h1>
+    <p>Zuständig für alle raumrelevanten, dekorativen, strukturellen und sonstigen Maßnahmen im Kinderzimmer | AZ: KA-ZGB-2024-§17b-Ref12b-UaRo-Fbip</p>
+  </div>
+</div>
+
+<div class="nav">
+  <a onclick="showPage('start')" class="active" id="nav-start">Startseite</a>
+  <a onclick="showPage('antrag')" id="nav-antrag">Antragsstellung</a>
+  <a onclick="showPage('formulare')" id="nav-formulare">Formulare & Downloads</a>
+  <a onclick="showPage('termin')" id="nav-termin">Terminvereinbarung</a>
+  <a onclick="showPage('status')" id="nav-status">Bearbeitungsstatus</a>
+  <a onclick="showPage('gebuehren')" id="nav-gebuehren">Gebühren</a>
+  <a onclick="showPopup('wartung')" class="broken">Widerspruch ⚠</a>
+  <a onclick="showPage('faq')" id="nav-faq">Häufige Fragen</a>
+  <a onclick="showPage('kontakt')" id="nav-kontakt">Kontakt</a>
+  <a onclick="showPopup('wartung')" class="broken">Barrierefreiheit ⚠</a>
+  <a onclick="showPage('sitemap')" id="nav-sitemap">Sitemap</a>
+  <a onclick="showPage('impressum')" id="nav-impressum">Impressum</a>
+</div>
+
+<div class="breadcrumb" id="breadcrumb">Startseite</div>
+
+<div class="layout">
+  <div class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">SCHNELLZUGRIFF</div>
+      <a onclick="showPage('antrag')">▶ Antrag stellen</a>
+      <a onclick="showPage('formulare')" class="sub">→ KA-ZGB-17b</a>
+      <a onclick="showPage('formulare')" class="sub">→ KA-ZGB-17d <span class="tag new">NEU</span></a>
+      <a onclick="showPage('termin')">▶ Termin vereinbaren</a>
+      <a onclick="showPage('status')">▶ Status prüfen</a>
+      <a onclick="showPage('gebuehren')">▶ Gebührenrechner</a>
+      <a onclick="showPopup('wartung')" class="broken">▶ Online-Zahlung ⚠</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">AKTUELLE HINWEISE</div>
+      <div class="warning">⚠ Neue Verordnung 01.03.2024</div>
+      <div class="warning">⚠ Telefonzeiten geändert</div>
+      <div class="warning">⚠ Formular 17d jetzt Pflicht</div>
+      <div class="warning">⚠ Bearbeitungszeit erhöht</div>
+      <div class="warning">⚠ Gebühren rückwirkend erhöht</div>
+      <div class="info">ℹ Sachbearbeiterin in Elternzeit</div>
+      <div class="info">ℹ Vertretung im Urlaub</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">KATEGORIEN</div>
+      <a onclick="showPage('antrag')">Erstantrag</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. A (Höhle, bodennah)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. A2 (Höhle, erhöht)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. B (Deko, nicht trag.)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. B2 (Deko, potenziell)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. C (Möbel &lt;30cm)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. C2 (Möbel &gt;30cm)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. D (Farbe)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. E (Bilder)</a>
+      <a onclick="showPage('antrag')" class="sub">→ Kat. F (Sonstiges)</a>
+      <a onclick="showPage('antrag')">Folgeantrag</a>
+      <a onclick="showPopup('wartung')" class="broken">Widerspruch ⚠</a>
+      <a onclick="showPopup('wartung')" class="broken">Beschwerde ⚠</a>
+      <a onclick="showPopup('wartung')" class="broken">Beschwerde über Beschwerde ⚠</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">WEITERE ÄMTER</div>
+      <a onclick="showPopup('extern')" class="sub">→ Amt für Spielzeugordnung</a>
+      <a onclick="showPopup('extern')" class="sub">→ Behörde f. Kuscheltierwesen</a>
+      <a onclick="showPopup('extern')" class="sub">→ Referat Lärmpegel</a>
+      <a onclick="showPopup('extern')" class="sub">→ Amt f. Treppensteigen</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">ARCHIV</div>
+      <a onclick="showPopup('archiv')" class="broken">Verordnungen 2003–2019 ⚠</a>
+      <a onclick="showPopup('archiv')" class="broken">Formulare (veraltet) ⚠</a>
+      <a onclick="showPopup('archiv')" class="broken">Beschlüsse Sachgebiet 4b ⚠</a>
+    </div>
+
+    <div style="padding:8px;font-size:9px;color:#777;line-height:1.6;">
+      <strong>Besucher heute:</strong><br>
+      <span id="counter">ERROR: Zähler nicht verfügbar</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- STARTSEITE -->
+    <div class="page active" id="page-start">
+      <h2>Willkommen beim Kinderamt – Abteilung Zimmergestaltung und Bauliche Veränderungsmaßnahmen</h2>
+
+      <div class="notice red">
+        <strong>⚠ PFLICHTLEKTÜRE VOR ANTRAGSTELLUNG:</strong> Seit dem 01.03.2024 ist das Beiblatt KA-ZGB-17d (Vogelschutzprüfung) bei jedem Antrag Pflicht. Anträge ohne dieses Dokument werden ohne Rückmeldung archiviert. Das Formular finden Sie unter <a onclick="showPage('formulare')">Formulare & Downloads</a> → Unterformulare → Naturschutz → Vögel → Unterordner 3b → Anlage zur Vogelschutzprüfung (Fassung März 2024, nicht zu verwechseln mit Fassung Februar 2024, die ungültig ist).
+      </div>
+
+      <div class="notice yellow">
+        <strong>Bearbeitungszeit:</strong> Aufgrund erhöhten Antragsaufkommens sowie krankheits- und urlaubsbedingter Ausfälle im Sachgebiet 4c beträgt die aktuelle Bearbeitungszeit <span class="important">14–20 Wochen</span> ab Eingang <em>aller</em> vollständigen Unterlagen. Bitte nehmen Sie in dieser Zeit von Rückfragen ab, da diese die Bearbeitung verzögern.
+      </div>
+
+      <div class="notice blue">
+        <strong>Technischer Hinweis:</strong> Diese Website wird regelmäßig gewartet. Letzte inhaltliche Aktualisierung: 14.02.2011. Letzte technische Aktualisierung: unbekannt. Empfohlener Browser: Internet Explorer 6.0. Bei Problemen mit der Darstellung: bitte Formular KA-IT-01 ausfüllen und per Post einsenden.
+      </div>
+
+      <div class="notice red">
+        <strong>⚠ ACHTUNG – JAVASCRIPT:</strong> Diese Seite erfordert Javascript. Falls Sie diese Meldung sehen, ist Javascript aktiviert. Falls Sie diese Meldung nicht sehen, ist Javascript deaktiviert. In diesem Fall können wir leider nicht weiterhelfen.
+      </div>
+
+      <h3>Fortschritt Ihrer aktuellen Sitzung</h3>
+      <div class="progress-bar"><div class="progress-fill" style="width:3%"></div><div class="progress-label">3% – Startseite gelesen</div></div>
+      <p style="font-size:9px;color:#777;">Hinweis: Der Fortschrittsbalken dient nur zur Orientierung und hat keinen Einfluss auf die Bearbeitungszeit.</p>
+
+      <h3>Neuigkeiten <span class="blink" style="color:#cc0000;">■ AKTUELL</span></h3>
+      <table>
+        <tr><th>Datum</th><th>Meldung</th></tr>
+        <tr><td>15.03.2024</td><td>Neue Vogelschutzverordnung in Kraft. Alle laufenden Anträge müssen nachgebessert werden. Frist: gestern.</td></tr>
+        <tr><td>01.01.2024</td><td>Gebührenerhöhung um 12,5%. Gilt rückwirkend ab 01.11.2023.</td></tr>
+        <tr><td>12.09.2023</td><td>Frau Müller-Brinkmann tritt Elternzeit an. Vertretung: Herr Hoffmann.</td></tr>
+        <tr><td>03.03.2023</td><td>Herr Hoffmann tritt Urlaub an. Rückkehr: unbekannt.</td></tr>
+        <tr><td>14.02.2011</td><td>Website neu gestaltet.</td></tr>
+        <tr><td>07.04.2009</td><td>Kinderamt Sachgebiet 4c eröffnet.</td></tr>
+      </table>
+
+      <h3>Zuständigkeitsmatrix</h3>
+      <div class="table-overflow">
+      <table style="min-width:600px;">
+        <tr><th>Maßnahme</th><th>Kategorie</th><th>Genehm.-pflichtig</th><th>Zuständig</th><th>Formulare</th><th>Wartezeit</th></tr>
+        <tr><td>Höhlenbau (bodennah)</td><td>A1</td><td>Ja</td><td>Referat 12b</td><td>17b, 17d</td><td>14–20 Wo.</td></tr>
+        <tr><td>Höhlenbau (erhöht)</td><td>A2</td><td>Ja (erhöht)</td><td>Referat 12b + 14a</td><td>17b, 17b-A, 17d</td><td>18–24 Wo.</td></tr>
+        <tr><td>Deko (nicht tragend, &lt;2kg)</td><td>B1</td><td>Ja</td><td>Referat 12c</td><td>17b, 17d</td><td>14–20 Wo.</td></tr>
+        <tr><td>Deko (potenziell tragend)</td><td>B2</td><td>Ja + Sondergutachten</td><td>Referat 12c + 15</td><td>17b, 17b-B, 17d, SG-01</td><td>26–32 Wo.</td></tr>
+        <tr><td>Möbelverschiebung &lt;30cm</td><td>C1</td><td>Ja</td><td>Referat 12b</td><td>17b, 17d</td><td>14–20 Wo.</td></tr>
+        <tr><td>Möbelverschiebung &gt;30cm</td><td>C2</td><td>Ja (erhöht)</td><td>Referat 12b + 14a</td><td>17b, 17c, 17d</td><td>20–28 Wo.</td></tr>
+        <tr><td>Farbliche Veränderung</td><td>D</td><td>Ja</td><td>Referat 15</td><td>17b, 17d, F-15</td><td>14–20 Wo.</td></tr>
+        <tr><td>Sonstiges</td><td>F</td><td>Klärung erforderlich</td><td>Klärungsgespräch</td><td>KA-T-03 zuerst</td><td>unbekannt</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <!-- ANTRAG -->
+    <div class="page" id="page-antrag">
+      <h2>Antragstellung – Formular KA-ZGB-17b (Erstantrag)</h2>
+
+      <div class="notice red">
+        <strong>ACHTUNG:</strong> Das Online-Formular ersetzt <span class="important">nicht</span> den postalischen Antrag. Es dient ausschließlich zur unverbindlichen Vorerfassung. Der eigentliche Antrag muss in <span class="important">dreifacher Ausfertigung</span> (Original + 2× beglaubigte Kopie) per Einschreiben eingereicht werden. Online-Anträge werden nicht bearbeitet.
+      </div>
+
+      <div class="notice yellow">
+        <strong>Sessionhinweis:</strong> Bitte beachten Sie, dass Ihre Sitzung nach <strong>4 Minuten Inaktivität</strong> automatisch beendet wird und alle eingegebenen Daten verloren gehen. Ein Speichern von Zwischenschritten ist nicht möglich.
+      </div>
+
+      <h3>Checkliste vor Antragstellung</h3>
+      <div class="step-box"><span class="step-num">1</span> Formular KA-ZGB-17b vollständig ausgefüllt (handschriftlich, Druckbuchstaben, schwarze Tinte, kein Tipp-Ex, kein Bleistift)</div>
+      <div class="step-box"><span class="step-num">2</span> Formular KA-ZGB-17d (Vogelschutz) <span class="tag new">PFLICHT seit 03/2024</span> – <a onclick="showPage('formulare')">Download leider nicht verfügbar</a></div>
+      <div class="step-box"><span class="step-num">3</span> Lageplan des Kinderzimmers (Maßstab 1:50, handgezeichnet oder digital, jedoch nicht am Computer erstellt)</div>
+      <div class="step-box"><span class="step-num">4</span> Beglaubigte Kopien aller Unterlagen (Notar oder gleichwertige Stelle, Kosten trägt Antragsteller)</div>
+      <div class="step-box"><span class="step-num">5</span> Einzahlungsbeleg der Antragsgebühr (€ 34,50 zzgl. Bearbeitungsgebühr zzgl. ggf. weiterer Gebühren gemäß aktueller Gebührenordnung)</div>
+      <div class="step-box"><span class="step-num">6</span> Formular KA-AZ-Klärung (nur bei Folgeanträgen, aber auch bei Erstanträgen empfohlen)</div>
+      <div class="step-box"><span class="step-num">7</span> Einverständniserklärung zur Datenspeicherung (Formular KA-DSGVO-03, 12 Seiten)</div>
+
+      <h3>Online-Vorerfassung (unverbindlich, kein Ersatz für postalischen Antrag)</h3>
+
+      <div class="form-group">
+        <label>Vorname <span class="required">*</span></label>
+        <input type="text" placeholder="Pflichtfeld – exakt wie im Personalausweis">
+        <div class="hint">Bitte keine Abkürzungen. Doppelnamen vollständig angeben. Bindestrich zählt als Zeichen.</div>
+      </div>
+      <div class="form-group">
+        <label>Nachname <span class="required">*</span></label>
+        <input type="text" placeholder="Pflichtfeld">
+        <div class="hint">Bei Namensänderung: bitte beides angeben, getrennt durch Schrägstrich.</div>
+      </div>
+      <div class="form-group">
+        <label>Geburtsdatum <span class="required">*</span></label>
+        <input type="text" placeholder="TT.MM.JJJJ">
+        <div class="hint">Auch Antragsteller unter 5 Jahren müssen das vollständige Geburtsdatum angeben. Keine Schätzungen.</div>
+      </div>
+      <div class="form-group">
+        <label>Geburtsort <span class="required">*</span></label>
+        <input type="text" placeholder="Geburtsort – vollständiger offizieller Name">
+        <div class="hint">Bei Geburtsorten im Ausland: bitte auch Länderkennzeichen angeben.</div>
+      </div>
+      <div class="form-group">
+        <label>Aktenzeichen (Folgeantrag)</label>
+        <input type="text" placeholder="KA-ZGB-____-____-____-____">
+        <div class="hint">Nur bei Folgeanträgen. Bei Erstantrag freilassen. Nicht ausfüllen wenn unbekannt. Bei Unklarheit: beiliegendes Formular KA-AZ-Klärung verwenden. Dieses Feld nicht ausfüllen wenn Sie sich unsicher sind ob es ein Folgeantrag ist.</div>
+      </div>
+      <div class="form-group">
+        <label>Art der Maßnahme <span class="required">*</span></label>
+        <select>
+          <option>-- bitte wählen (Pflichtfeld) --</option>
+          <option>Höhlenbau – Kat. A1 (bodennah, &lt;1m, Deckenkontakt: nein)</option>
+          <option>Höhlenbau – Kat. A1b (bodennah, &lt;1m, Deckenkontakt: ja)</option>
+          <option>Höhlenbau – Kat. A2 (erhöht, 1–2m, Sondergenehmigung erforderlich)</option>
+          <option>Höhlenbau – Kat. A3 (&gt;2m, Statikgutachten erforderlich)</option>
+          <option>Deko – Kat. B1 (nicht tragend, &lt;2kg, Wand: nein)</option>
+          <option>Deko – Kat. B1w (nicht tragend, &lt;2kg, Wand: ja)</option>
+          <option>Deko – Kat. B2 (nicht tragend, 2–5kg)</option>
+          <option>Deko – Kat. B3 (potenziell tragend, Gutachten erforderlich)</option>
+          <option>Möbelverschiebung – Kat. C1 (&lt;30cm, keine Wandnähe)</option>
+          <option>Möbelverschiebung – Kat. C1w (&lt;30cm, Wandnähe &lt;10cm)</option>
+          <option>Möbelverschiebung – Kat. C2 (&gt;30cm)</option>
+          <option>Farbliche Veränderung – Kat. D (Referat 15 zuständig, falsches Formular)</option>
+          <option>Bildaufhängung – Kat. E (&lt;500g)</option>
+          <option>Bildaufhängung – Kat. E2 (&gt;500g, Dübel erforderlich)</option>
+          <option>Kombination A+B (Anlage KA-ZGB-17b-KOM erforderlich)</option>
+          <option>Kombination A+B+C (Anlage KA-ZGB-17b-KOM+ erforderlich)</option>
+          <option>Sonstiges – Kat. F (Klärungsgespräch zuerst vereinbaren)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Beschreibung <span class="required">*</span></label>
+        <textarea rows="3" style="max-width:400px;width:100%;font-family:'Courier New',monospace;font-size:10px;" placeholder="Max. 150 Zeichen. Keine Abkürzungen. Keine Umlaute (ä=ae, ö=oe, ü=ue). Kein Satzzeichen außer Komma und Punkt."></textarea>
+        <div class="hint">Zähler: <span id="char-count">0</span>/150 Zeichen. Überziehen führt zur automatischen Ablehnung.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Gewünschter Fertigstellungstermin</label>
+        <input type="text" disabled value="Wird durch das Amt festgelegt – keine Wunschtermine möglich">
+      </div>
+
+      <div class="captcha-box">
+        <p style="font-size:9px;margin-bottom:6px;font-weight:bold;">Sicherheitsabfrage Nr. 1 von 3 – Bitte geben Sie die Zeichen exakt ein:</p>
+        <div class="captcha-img">mX9qPz</div>
+        <div style="margin-top:6px;">
+          <input type="text" placeholder="Zeichen eingeben" style="width:140px;font-size:10px;">
+          <div class="hint">Groß-/Kleinschreibung beachten. Bei Fehler: Seite neu laden (alle Daten gehen verloren).</div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="showPopup('submit')">Weiter zu Sicherheitsabfrage 2 von 3</button>
+      <button class="btn btn-secondary" onclick="showPopup('reset')">Zurücksetzen</button>
+      <button class="btn btn-danger" style="margin-left:6px;" onclick="showPopup('abbrechen')">Abbrechen</button>
+      <p style="font-size:9px;color:#777;margin-top:8px;">* Pflichtfelder | Verarbeitung gemäß §§ 12–14 DSGVO i.V.m. KADSchV v. 14.06.2018 i.d.F. v. 22.09.2021 i.V.m. § 3 Abs. 2 KAG</p>
+    </div>
+
+    <!-- FORMULARE -->
+    <div class="page" id="page-formulare">
+      <h2>Formulare & Downloads</h2>
+
+      <div class="notice yellow">
+        <strong>Download-Hinweis:</strong> Alle Formulare sind nur mit Adobe Reader 8.0 oder älter korrekt darstellbar und ausfüllbar. Bei neueren Versionen können Felder fehlen, verschoben sein oder falsch gedruckt werden. Das Kinderamt übernimmt keine Haftung für fehlerhaft ausgefüllte Formulare aufgrund veralteter Software.
+      </div>
+
+      <div class="maintenance">
+        ⚠ WARTUNG ⚠<br>
+        <span style="font-size:10px;font-weight:normal;">Der Download-Server befindet sich derzeit in Wartung. Voraussichtliche Wiederherstellung: Q3 2024.<br>
+        Bitte fordern Sie alle Formulare schriftlich an. Bearbeitungszeit: 2–3 Wochen.</span>
+      </div>
+
+      <h3>Hauptformulare</h3>
+      <table>
+        <tr><th>Formular</th><th>Bezeichnung</th><th>Stand</th><th>Seiten</th><th>Download</th></tr>
+        <tr><td>KA-ZGB-17a</td><td>Vorprüfung (vor Erstantrag auszufüllen)</td><td>2019</td><td>8</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-ZGB-17b <span class="tag updated">AKTUELL</span></td><td>Erstantrag Zimmerumgestaltung</td><td>03/2024</td><td>14</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-ZGB-17b-KOM</td><td>Anlage bei Kombinationsmaßnahmen</td><td>03/2024</td><td>6</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-ZGB-17c</td><td>Folgeantrag nach Ablehnung</td><td>2021</td><td>11</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-ZGB-17d <span class="tag new">NEU PFLICHT</span></td><td>Beiblatt Vogelschutzprüfung</td><td>03/2024</td><td>4</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-ZGB-18a</td><td>Widerspruchsformular</td><td>2018</td><td>9</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-AZ-Klärung</td><td>Anlage zur Aktenzeichenklärung</td><td>2020</td><td>3</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-DSGVO-03</td><td>Einverständniserklärung Datenspeicherung</td><td>2022</td><td>12</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-T-03</td><td>Terminanfrageformular (postalisch)</td><td>2019</td><td>2</td><td><span style="color:#cc0000">Nur vor Ort oder per Post erhältlich</span></td></tr>
+        <tr><td>KA-IT-01</td><td>Fehlermeldung Website</td><td>2011</td><td>1</td><td><span style="color:#cc0000">Nur per Post erhältlich</span></td></tr>
+      </table>
+
+      <h3>Unterformulare (Naturschutz → Vögel → Unterordner 3b)</h3>
+      <table>
+        <tr><th>Formular</th><th>Bezeichnung</th><th>Download</th></tr>
+        <tr><td>KA-VS-01</td><td>Vogelschutzprüfung – Grunderhebung</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-VS-02</td><td>Artenschutzrechtliche Ausnahme</td><td><a onclick="showPopup('download')">⬇ PDF</a></td></tr>
+        <tr><td>KA-VS-03</td><td>Bestätigung Naturschutzbehörde (extern zu beschaffen)</td><td><span style="color:#cc0000">Extern</span></td></tr>
+      </table>
+
+      <h3>Ungültige / archivierte Formulare (nicht mehr verwenden)</h3>
+      <p style="color:#cc0000;font-size:10px;">⚠ Anträge mit archivierten Formularen werden ohne Rückmeldung abgelehnt. Bereits entrichtete Gebühren werden nicht erstattet.</p>
+      <table>
+        <tr><th>Formular</th><th>Ungültig seit</th><th>Nachfolger</th></tr>
+        <tr><td>KA-ZGB-15a</td><td>2019</td><td>KA-ZGB-17b</td></tr>
+        <tr><td>KA-ZGB-16b</td><td>2021</td><td>KA-ZGB-17b</td></tr>
+        <tr><td>KA-ZGB-17b (Fassung Feb. 2024)</td><td>01.03.2024</td><td>KA-ZGB-17b (Fassung März 2024)</td></tr>
+        <tr><td>KA-ZGB-17d (Fassung Feb. 2024)</td><td>01.03.2024</td><td>KA-ZGB-17d (Fassung März 2024)</td></tr>
+      </table>
+    </div>
+
+    <!-- TERMIN -->
+    <div class="page" id="page-termin">
+      <h2>Terminvereinbarung</h2>
+
+      <div class="notice red">
+        <strong>VORAUSSETZUNG:</strong> Termine können erst vergeben werden, nachdem die <span class="important">schriftliche Eingangsbestätigung</span> vorliegt. Die Eingangsbestätigung wird 3–4 Wochen nach Eingang des vollständigen Antrags versandt. Bitte rufen Sie <span class="important">nicht</span> an, um den Eingang zu bestätigen.
+      </div>
+
+      <h3>Telefonische Erreichbarkeit</h3>
+      <div class="hotline-box">
+        <div class="hotline-number">☎ 0800-5463376268 (0800-KINDERAMT)</div>
+        <p style="font-size:9px;color:#777;margin-top:4px;">Bitte halten Sie bei Anruf bereit: Aktenzeichen, Geburtsdatum, Formular KA-T-03 (ausgefüllt), Personalausweis.</p>
+        <table style="margin-top:8px;">
+          <tr><th>Wochentag</th><th>Erreichbarkeit</th><th>Hinweis</th></tr>
+          <tr><td>Montag</td><td style="color:#cc0000">Nicht erreichbar</td><td>Interner Planungstag</td></tr>
+          <tr><td>Dienstag</td><td><strong>11:30 – 11:35 Uhr</strong></td><td>Nur Terminvergabe, keine Auskünfte</td></tr>
+          <tr><td>Mittwoch</td><td style="color:#cc0000">Nicht erreichbar</td><td>Schulungstag</td></tr>
+          <tr><td>Donnerstag</td><td><strong>11:30 – 11:35 Uhr</strong></td><td>Nur Terminvergabe, keine Auskünfte</td></tr>
+          <tr><td>Freitag</td><td style="color:#cc0000">Nicht erreichbar</td><td>Gleittag</td></tr>
+        </table>
+        <p style="font-size:9px;color:#cc0000;margin-top:6px;">Nicht erreichbar an: Feiertagen, Brückentagen, Schulferien, Woche vor/nach Schulferien, Tag vor Feiertag, Tag nach Feiertag, Tagen mit besonderer Wetterlage.</p>
+      </div>
+
+      <h3>Online-Terminbuchung</h3>
+      <div class="maintenance">
+        ⚠ ONLINE-TERMINBUCHUNG DERZEIT NICHT VERFÜGBAR ⚠<br>
+        <span style="font-size:10px;font-weight:normal;">Technische Störung seit 14.02.2019. Voraussichtliche Wiederherstellung: wird geprüft.</span>
+      </div>
+
+      <h3>Postalische Terminanfrage</h3>
+      <div class="step-box"><span class="step-num">1</span> Formular KA-T-03 ausfüllen (nur vor Ort oder per Post nach Anforderung erhältlich – Anforderung selbst: Bearbeitungszeit 1–2 Wochen)</div>
+      <div class="step-box"><span class="step-num">2</span> Formular per Einschreiben einsenden</div>
+      <div class="step-box"><span class="step-num">3</span> Eingangsbestätigung der Terminanfrage abwarten (3–4 Wochen)</div>
+      <div class="step-box"><span class="step-num">4</span> Terminalternativen werden schriftlich mitgeteilt – Rückantwort innerhalb von 5 Werktagen erforderlich, sonst verfällt das Angebot</div>
+      <div class="step-box"><span class="step-num">5</span> Bei Nichterscheinen: neue Terminanfrage, Gebühr: € 15,00, Wartezeit beginnt neu</div>
+
+      <h3>Aktuelle Wartezeiten auf Termin</h3>
+      <table>
+        <tr><th>Antragstyp</th><th>Wartezeit</th><th>Tendenz</th></tr>
+        <tr><td>Erstantrag Kat. A–C</td><td style="color:#cc0000"><strong>8–12 Wochen</strong></td><td>↑ steigend</td></tr>
+        <tr><td>Erstantrag Kat. D–F</td><td style="color:#cc0000"><strong>10–16 Wochen</strong></td><td>↑ steigend</td></tr>
+        <tr><td>Folgeantrag</td><td style="color:#cc0000"><strong>12–18 Wochen</strong></td><td>↑ steigend</td></tr>
+        <tr><td>Widerspruch</td><td style="color:#cc0000"><strong>20–28 Wochen</strong></td><td>↑ steigend</td></tr>
+        <tr><td>Dringlichkeitsantrag</td><td colspan="2">Nicht vorgesehen. Dringlichkeitsanträge werden nicht entgegengenommen.</td></tr>
+      </table>
+    </div>
+
+    <!-- STATUS -->
+    <div class="page" id="page-status">
+      <h2>Bearbeitungsstatus prüfen</h2>
+
+      <div class="notice yellow">
+        <strong>Hinweis:</strong> Der Online-Statusabruf ist nur mit Aktenzeichen und Geburtsdatum möglich. Das Aktenzeichen erhalten Sie mit der schriftlichen Eingangsbestätigung (3–4 Wochen nach Eingang). Ohne Aktenzeichen ist kein Statusabruf möglich. Ein telefonischer Statusabruf ist ebenfalls nicht möglich.
+      </div>
+
+      <div class="form-group">
+        <label>Aktenzeichen <span class="required">*</span></label>
+        <input type="text" placeholder="KA-ZGB-____-____-____-____" id="az-input">
+        <div class="hint">Format: KA-ZGB-JJJJ-NNNN-Ref-Kat (z.B. KA-ZGB-2024-0847-12b-A1)</div>
+      </div>
+      <div class="form-group">
+        <label>Geburtsdatum des Antragstellers <span class="required">*</span></label>
+        <input type="text" placeholder="TT.MM.JJJJ" id="geb-input">
+      </div>
+      <div class="form-group">
+        <label>Sicherheitscode (aus Eingangsbestätigung) <span class="required">*</span></label>
+        <input type="text" placeholder="8-stelliger Code">
+        <div class="hint">Der Sicherheitscode befindet sich auf Seite 3 der Eingangsbestätigung, zweite Spalte, dritter Absatz.</div>
+      </div>
+
+      <div class="captcha-box">
+        <p style="font-size:9px;margin-bottom:4px;font-weight:bold;">Sicherheitsabfrage:</p>
+        <div class="captcha-img">7Rk2mQ</div>
+        <input type="text" placeholder="Zeichen eingeben" style="width:140px;font-size:10px;margin-top:6px;">
+      </div>
+
+      <button class="btn" onclick="showStatus()">Status abrufen</button>
+
+      <div id="status-result" style="display:none;margin-top:12px;">
+        <h3>Bearbeitungsstand – AZ: KA-ZGB-2024-0847-12b-A1</h3>
+        <div class="status-box">
+          <div class="status-row"><span>Antrag eingegangen:</span><span class="status-ok">✓ 14.01.2024</span></div>
+          <div class="status-row"><span>Eingangsbestätigung versandt:</span><span class="status-ok">✓ 08.02.2024</span></div>
+          <div class="status-row"><span>Formular KA-ZGB-17b (März 2024):</span><span class="status-ok">✓ Vollständig</span></div>
+          <div class="status-row"><span>Formular KA-ZGB-17d (Vogelschutz):</span><span class="status-missing">✗ FEHLEND</span></div>
+          <div class="status-row"><span>Lageplan (Maßstab 1:50):</span><span class="status-ok">✓ Vorhanden</span></div>
+          <div class="status-row"><span>Beglaubigte Kopien (3×):</span><span class="status-missing">✗ Nur 2 eingegangen</span></div>
+          <div class="status-row"><span>KA-DSGVO-03:</span><span class="status-missing">✗ FEHLEND</span></div>
+          <div class="status-row"><span>Antragsgebühr € 34,50:</span><span class="status-ok">✓ Eingegangen</span></div>
+          <div class="status-row"><span>Vogelschutzgebühr € 45,00:</span><span class="status-missing">✗ Ausstehend</span></div>
+          <div class="status-row"><span>Nachreichungsgebühr € 18,00:</span><span class="status-missing">✗ Ausstehend (neu)</span></div>
+          <div class="status-row"><span><strong>Status:</strong></span><span class="status-pending"><strong>⏳ UNTERBROCHEN – 3 Nachbesserungen erforderlich</strong></span></div>
+          <div class="status-row"><span>Neue Bearbeitungsfrist ab Nachbesserung:</span><span>14–20 Wochen (Frist beginnt neu)</span></div>
+        </div>
+        <div class="notice red" style="margin-top:8px;">
+          <strong>Maßnahme erforderlich:</strong> Bitte reichen Sie nach: (1) Formular KA-ZGB-17d, (2) eine weitere beglaubigte Kopie aller Unterlagen, (3) Formular KA-DSGVO-03, (4) Gebühren € 63,00. Bitte beachten Sie: durch die Nachreichung beginnt die Bearbeitungsfrist neu. Die bisherige Wartezeit seit Januar 2024 verfällt vollständig.
+        </div>
+      </div>
+    </div>
+
+    <!-- GEBÜHREN -->
+    <div class="page" id="page-gebuehren">
+      <h2>Gebührenordnung</h2>
+
+      <div class="notice red">
+        <strong>WICHTIG:</strong> Die Gebührenordnung gilt rückwirkend ab 01.11.2023. Bereits bezahlte Gebühren nach alter Ordnung sind durch Nachzahlung anzupassen. Rückerstattungen sind nicht vorgesehen.
+      </div>
+
+      <h3>Vollständige Gebührenübersicht</h3>
+      <table>
+        <tr><th>Position</th><th>Gebühr</th><th>Erstattbar</th></tr>
+        <tr><td>Antragsbearbeitung (Grundgebühr)</td><td>€ 34,50</td><td>Nein</td></tr>
+        <tr><td>Verwaltungsgebühr (nicht erstattbar)</td><td>€ 12,00</td><td>Nein</td></tr>
+        <tr><td>Terminvereinbarungsgebühr</td><td>€ 8,00</td><td>Nein</td></tr>
+        <tr><td>Vor-Ort-Begehung (Pflicht bei Kat. A–C)</td><td>€ 28,00</td><td>Nein</td></tr>
+        <tr><td>Vogelschutzprüfung (Pflicht seit 03/2024)</td><td>€ 45,00</td><td>Nein</td></tr>
+        <tr><td>Beglaubigungsgebühr je Kopie (Notar)</td><td>ca. € 12,00</td><td>Nein</td></tr>
+        <tr><td>Nachreichungsgebühr (je Nachreichung)</td><td>€ 18,00</td><td>Nein</td></tr>
+        <tr><td>Nichterscheinen zum Termin</td><td>€ 15,00</td><td>Nein</td></tr>
+        <tr><td>Mahngebühr (je Mahnung)</td><td>€ 8,50</td><td>Nein</td></tr>
+        <tr><td>Widerspruchsverfahren</td><td>€ 55,00</td><td>Nein</td></tr>
+        <tr><td>Beschwerdegebühr</td><td>€ 35,00</td><td>Nein</td></tr>
+        <tr><td>Formularanforderung per Post</td><td>€ 3,50</td><td>Nein</td></tr>
+        <tr><td>Sitzungspauschale je angefangene Stunde</td><td>€ 22,00</td><td>Nein</td></tr>
+        <tr><td><strong>Typische Gesamtkosten Erstantrag</strong></td><td><strong>€ 155,00 – € 280,00</strong></td><td>Nein</td></tr>
+      </table>
+
+      <h3>Zahlungsmodalitäten</h3>
+      <p>Ausschließlich per Banküberweisung. Barzahlung: nicht möglich. EC-Karte: nicht möglich. Kreditkarte: nicht möglich. PayPal: nicht möglich. Überweisung im SEPA-Ausland: gesonderter Antrag erforderlich (Formular KA-ZAH-02).</p>
+      <p><strong>Kontoinhaber:</strong> Kinderamt Sachgebiet 4c<br>
+      <strong>IBAN:</strong> DE00 0000 0000 0000 0000 00<br>
+      <strong>Verwendungszweck:</strong> <span class="important">AZ + Nachname + Geburtsdatum + KA-ZGB-17b + Kategorie + Referat + ggf. Anlage</span></p>
+      <p style="color:#cc0000;font-size:10px;font-weight:bold;">⚠ Fehlerhafte Verwendungszwecke führen zur Nichtverrechnung. Rückbuchung: nicht möglich. Erneute Einzahlung erforderlich.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="page" id="page-faq">
+      <h2>Häufig gestellte Fragen</h2>
+
+      <h3>Wie lange dauert die Bearbeitung?</h3>
+      <p>14–20 Wochen ab Eingang <em>aller</em> vollständigen Unterlagen. Bei Nachreichung beginnt die Frist neu. Bei Widerspruch: zusätzliche 20–28 Wochen.</p>
+
+      <h3>Kann ich den Status telefonisch erfragen?</h3>
+      <p>Nein. Telefonische Statusanfragen werden nicht entgegengenommen und können die Bearbeitungszeit verlängern.</p>
+
+      <h3>Ich habe das Formular KA-ZGB-17d vergessen.</h3>
+      <p>Der Antrag wird unterbrochen. Die bisherige Bearbeitungszeit verfällt. Nachreichungsgebühr: € 18,00. Neue Bearbeitungsfrist: 14–20 Wochen.</p>
+
+      <h3>Kann ich online bezahlen?</h3>
+      <p>Nein. Online-Zahlung ist derzeit nicht verfügbar. Ausschließlich Banküberweisung.</p>
+
+      <h3>Mein Kind hat den Antrag ausgefüllt. Ist das gültig?</h3>
+      <p>Nein. Anträge in Kinderhandschrift werden ohne Rückmeldung archiviert. Bereits gezahlte Gebühren verfallen.</p>
+
+      <h3>Was passiert bei einer seltenen Vogelart im Bett?</h3>
+      <p>Die Begehung wird unterbrochen. Das Bett darf bis zur Klärung nicht genutzt werden. Zusätzliche Vogelschutzprüfung: 4–8 Wochen, Kosten trägt Antragsteller. Der Naturschützer, der sich ggf. festgekettet hat, ist eigenständig zu kontaktieren.</p>
+
+      <h3>Kann ich einen Termin außerhalb der Telefonzeiten vereinbaren?</h3>
+      <p>Nein. Telefonzeiten: Di + Do, 11:30–11:35 Uhr. Außerhalb dieser Zeiten ist keine Terminvergabe möglich.</p>
+
+      <h3>Ich wurde nach 4 Minuten ausgeloggt und meine Daten sind weg.</h3>
+      <p>Das ist systembedingt und nicht rückgängig zu machen. Bitte von vorne beginnen.</p>
+
+      <h3>Meine Tochter weint.</h3>
+      <p>Bitte verweisen Sie auf das laufende Verfahren. Emotionale Einwände haben keinen Einfluss auf Bearbeitungszeit oder Ergebnis. Für psychologische Unterstützung wenden Sie sich bitte an das zuständige Jugendamt (anderer Zuständigkeitsbereich, kein gemeinsames Formular).</p>
+
+      <h3>Gibt es eine Möglichkeit, die Wartezeit zu verkürzen?</h3>
+      <p>Nein. Dringlichkeitsanträge werden nicht entgegengenommen.</p>
+
+      <h3>Wo finde ich Formular KA-T-03?</h3>
+      <p>Ausschließlich vor Ort oder per Post nach schriftlicher Anforderung. Bearbeitungszeit der Anforderung: 1–2 Wochen. Das Formular zur Anforderung des Formulars (KA-T-03-ANF) erhalten Sie ebenfalls nur vor Ort.</p>
+    </div>
+
+    <!-- KONTAKT -->
+    <div class="page" id="page-kontakt">
+      <h2>Kontakt</h2>
+
+      <div class="notice red">
+        <strong>Bitte beachten Sie:</strong> E-Mails werden nicht beantwortet. Persönliche Vorsprachen nur mit Termin. Telefonische Auskünfte nur zu Terminvergabe, keine Sachfragen.
+      </div>
+
+      <table>
+        <tr><th>Kontaktweg</th><th>Details</th><th>Verfügbarkeit</th><th>Hinweis</th></tr>
+        <tr><td>Telefon</td><td>0800-KINDERAMT</td><td>Di + Do, 11:30–11:35 Uhr</td><td>Nur Terminvergabe</td></tr>
+        <tr><td>E-Mail</td><td>ka-zgb-4c@kinderamt.de</td><td style="color:#cc0000">Wird nicht beantwortet</td><td>Postweg bevorzugen</td></tr>
+        <tr><td>Post</td><td>Postfach 0000, 00000 Musterstadt</td><td>Bearbeitungszeit 3–4 Wo.</td><td>Einschreiben empfohlen</td></tr>
+        <tr><td>Persönlich</td><td>Zimmer 412b, 4. OG (kein Aufzug)</td><td>Nur mit Termin</td><td>Ausweis mitbringen</td></tr>
+        <tr><td>Fax</td><td>0800-KINDERAMT-1</td><td>Mo–Fr 9:00–9:05 Uhr</td><td>Fax wird nicht bestätigt</td></tr>
+        <tr><td>Online-Kontaktformular</td><td colspan="3" style="color:#cc0000">Derzeit nicht verfügbar (Wartung seit 2019)</td></tr>
+      </table>
+
+      <h3>Sachbearbeitung</h3>
+      <p><strong>Frau Hildegard Müller-Brinkmann</strong> – Sachbearbeiterin Referat 12b<br>
+      Derzeit in Elternzeit bis voraussichtlich Q2 2025.<br>
+      <strong>Vertretung: Herr Klaus-Dieter Hoffmann</strong> – derzeit im Urlaub, Rückkehr unbekannt.<br>
+      <strong>Vertretung der Vertretung:</strong> Frau Ingeborg Schulte-Meijer – zuständig für Sachgebiet 4b, hilft aber ggf. weiter. Derzeit in Fortbildung.</p>
+
+      <div class="notice yellow" style="margin-top:10px;">
+        <strong>Hinweis:</strong> Das Kinderamt ist nicht zuständig für: Spielzeugordnung, Lärmpegel, Treppensteigen, Essenszeiten, Schlafenszeiten und sonstige kindliche Aktivitäten außerhalb des Zimmers. Für diese Zuständigkeiten: bitte das jeweils zuständige Referat kontaktieren.
+      </div>
+    </div>
+
+    <!-- SITEMAP -->
+    <div class="page" id="page-sitemap">
+      <h2>Sitemap</h2>
+      <p style="font-size:10px;color:#777;margin-bottom:10px;">Vollständige Übersicht aller Seiten. Stand: 14.02.2011.</p>
+      <table>
+        <tr><th>Seite</th><th>URL</th><th>Status</th></tr>
+        <tr><td>Startseite</td><td>/index.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Antragsstellung</td><td>/antrag/17b/erstantrag.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Formulare & Downloads</td><td>/formulare/index.html</td><td style="color:#cc8800">⚠ Downloads offline</td></tr>
+        <tr><td>Terminvereinbarung</td><td>/termin/index.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Online-Terminbuchung</td><td>/termin/online.html</td><td style="color:#cc0000">✗ Offline seit 2019</td></tr>
+        <tr><td>Bearbeitungsstatus</td><td>/status/index.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Gebühren</td><td>/gebuehren/index.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Widerspruch</td><td>/widerspruch/index.html</td><td style="color:#cc0000">✗ Offline (Wartung)</td></tr>
+        <tr><td>Barrierefreiheit</td><td>/barrierefreiheit.html</td><td style="color:#cc0000">✗ Offline (Wartung)</td></tr>
+        <tr><td>Online-Zahlung</td><td>/zahlung/index.html</td><td style="color:#cc0000">✗ Offline seit 2021</td></tr>
+        <tr><td>Kontaktformular</td><td>/kontakt/formular.html</td><td style="color:#cc0000">✗ Offline seit 2019</td></tr>
+        <tr><td>Archiv 2003–2019</td><td>/archiv/index.html</td><td style="color:#cc0000">✗ Nur mit Zugangsberechtigung</td></tr>
+        <tr><td>FAQ</td><td>/faq/index.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Kontakt</td><td>/kontakt/index.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Impressum</td><td>/impressum.html</td><td style="color:#006600">✓ Online</td></tr>
+        <tr><td>Datenschutz</td><td>/datenschutz.html</td><td style="color:#cc0000">✗ Offline (in Überarbeitung)</td></tr>
+      </table>
+    </div>
+
+    <!-- IMPRESSUM -->
+    <div class="page" id="page-impressum">
+      <h2>Impressum</h2>
+      <p><strong>Kinderamt</strong><br>
+      Abteilung Zimmergestaltung und Bauliche Veränderungsmaßnahmen<br>
+      Sachgebiet 4c | Referat 12b | Unterabteilung Raumordnung<br>
+      Fachbereich Innenraumplanung | Zuständigkeitsbereich Papa</p>
+      <p>Postfach 0000<br>00000 Musterstadt</p>
+      <p>Verantwortlich im Sinne des Presserechts: Frau Hildegard Müller-Brinkmann (derzeit in Elternzeit)</p>
+      <p>Letzte inhaltliche Aktualisierung: 14.02.2011<br>
+      Letzte technische Aktualisierung: unbekannt<br>
+      Empfohlener Browser: Internet Explorer 6.0<br>
+      Optimiert für: 800×600 Pixel<br>
+      Barrierefreiheit: <a onclick="showPopup('wartung')">Erklärung derzeit offline</a></p>
+      <p style="font-size:9px;color:#777;margin-top:8px;">© 2009 Kinderamt. Alle Rechte vorbehalten. Die Nutzung dieser Website ist nur gestattet, sofern ein entsprechender Nutzungsantrag (Formular KA-U-01) vorliegt und genehmigt wurde.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <span>© 2009 Kinderamt | Sachgebiet 4c | Referat 12b | Unterabteilung Raumordnung</span>
+  <span>
+    <a onclick="showPage('impressum')">Impressum</a> | 
+    <a onclick="showPopup('wartung')">Datenschutz (offline)</a> | 
+    <a onclick="showPopup('wartung')">Barrierefreiheit (offline)</a> | 
+    <a onclick="showPage('sitemap')">Sitemap</a> | 
+    <a onclick="showPage('kontakt')">Kontakt</a>
+  </span>
+  <span>Letzte Aktualisierung: 14.02.2011 | IE 6.0 | 800×600px | Cookies: 47</span>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+
+<!-- POPUPS -->
+<div class="popup" id="popup-submit">
+  <div class="popup-title">Systemhinweis – Sicherheitsabfrage fehlgeschlagen <span onclick="closePopup()">✕</span></div>
+  <p>Die Sicherheitsabfrage war nicht korrekt. Ihre Vorerfassung wurde <strong>nicht</strong> gespeichert.</p>
+  <p style="margin-top:6px;">Aus Sicherheitsgründen wurden alle eingegebenen Daten gelöscht. Bitte laden Sie die Seite neu und beginnen Sie von vorne.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Fehlercode: SEC-403-CAPTCHA-FAIL | Session-ID: 8f3k2m | Timestamp: <span id="ts"></span></p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK – Seite neu laden</button>
+</div>
+
+<div class="popup" id="popup-reset">
+  <div class="popup-title">Formular zurücksetzen <span onclick="closePopup()">✕</span></div>
+  <p>Möchten Sie das Formular wirklich zurücksetzen?</p>
+  <p style="margin-top:6px;color:#cc0000;">Alle eingegebenen Daten gehen unwiderruflich verloren. Diese Aktion kann nicht rückgängig gemacht werden.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">Ja, zurücksetzen</button>
+  <button class="btn btn-secondary" style="margin-top:10px;margin-left:6px;" onclick="closePopup()">Abbrechen</button>
+</div>
+
+<div class="popup" id="popup-abbrechen">
+  <div class="popup-title">Antrag abbrechen <span onclick="closePopup()">✕</span></div>
+  <p>Möchten Sie den Antrag wirklich abbrechen?</p>
+  <p style="margin-top:6px;color:#cc0000;">Alle eingegebenen Daten gehen verloren. Bereits gezahlte Gebühren werden nicht erstattet.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Hinweis: Auch ein abgebrochener Antrag zählt als Erstantrag. Ein erneuter Erstantrag ist erst nach Ablauf einer Sperrfrist von 6 Wochen möglich.</p>
+  <button class="btn btn-danger" style="margin-top:10px;" onclick="closePopup()">Ja, abbrechen</button>
+  <button class="btn btn-secondary" style="margin-top:10px;margin-left:6px;" onclick="closePopup()">Zurück zum Formular</button>
+</div>
+
+<div class="popup" id="popup-download">
+  <div class="popup-title">Download nicht verfügbar <span onclick="closePopup()">✕</span></div>
+  <p>Der Download-Server befindet sich derzeit in Wartung.</p>
+  <p style="margin-top:6px;">Bitte fordern Sie das Formular schriftlich an:</p>
+  <p style="margin-top:4px;font-size:10px;">Kinderamt, Sachgebiet 4c, Postfach 0000, 00000 Musterstadt</p>
+  <p style="margin-top:4px;font-size:9px;color:#777;">Bearbeitungszeit: 2–3 Wochen. Bitte geben Sie im Verwendungszweck die Formularnummer an. Das Anforderungsformular (KA-FORM-ANF) erhalten Sie ebenfalls nur per Post.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<div class="popup" id="popup-archiv">
+  <div class="popup-title">Archiv – Zugang verweigert <span onclick="closePopup()">✕</span></div>
+  <p>Das Archiv ist nur nach vorheriger Genehmigung zugänglich.</p>
+  <p style="margin-top:6px;">Bitte beantragen Sie einen Archivzugang (Formular KA-A-07). Bearbeitungszeit: 6–8 Wochen. Das Formular erhalten Sie nur vor Ort.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<div class="popup" id="popup-wartung">
+  <div class="popup-title">Seite nicht verfügbar <span onclick="closePopup()">✕</span></div>
+  <p>Diese Seite befindet sich derzeit in Wartung oder ist aus technischen Gründen nicht verfügbar.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Voraussichtliche Wiederherstellung: wird geprüft. Für Rückfragen: Formular KA-IT-01 per Post einsenden.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<div class="popup" id="popup-cookies">
+  <div class="popup-title">Cookie-Einstellungen <span onclick="closePopup()">✕</span></div>
+  <p>Diese Website verwendet 47 Arten von Cookies, aufgeteilt in 12 Kategorien.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Eine detaillierte Übersicht finden Sie in unserer Datenschutzerklärung (34 Seiten, nur per Post erhältlich, Bearbeitungszeit: 3–4 Wochen).</p>
+  <p style="margin-top:6px;font-size:9px;">Einzelne Cookies können nicht deaktiviert werden. Es ist nur möglich, alle Cookies zu akzeptieren oder die Website nicht zu nutzen.</p>
+  <button class="btn" style="margin-top:10px;" onclick="document.getElementById('cookie-bar').style.display='none';closePopup()">Alle akzeptieren</button>
+  <button class="btn btn-secondary" style="margin-top:10px;margin-left:6px;" onclick="closePopup()">Abbrechen</button>
+</div>
+
+<div class="popup" id="popup-cookies-ablehnen">
+  <div class="popup-title">Cookies ablehnen <span onclick="closePopup()">✕</span></div>
+  <p>Um Cookies abzulehnen, müssen Sie das Formular KA-DSGVO-COOKIE-ABL ausfüllen und per Post einsenden.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Bearbeitungszeit: 6–8 Wochen. Bis zur Bearbeitung Ihres Antrags werden weiterhin alle Cookies gesetzt. Das Formular erhalten Sie nur vor Ort oder per schriftlicher Anforderung.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">Verstanden</button>
+</div>
+
+<div class="popup" id="popup-schrift">
+  <div class="popup-title">Schriftgröße <span onclick="closePopup()">✕</span></div>
+  <p>Die Schriftgrößenfunktion ist derzeit aufgrund technischer Wartungsarbeiten nicht verfügbar.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Bitte nutzen Sie die Zoom-Funktion Ihres Browsers. Empfehlung: Internet Explorer 6.0, Ansicht → Schriftgröße → Mittel.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<div class="popup" id="popup-drucken">
+  <div class="popup-title">Drucken <span onclick="closePopup()">✕</span></div>
+  <p>Die Druckfunktion ist leider nicht verfügbar.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Bitte nutzen Sie Strg+P. Bitte beachten Sie, dass das Drucklayout für Internet Explorer 6.0 optimiert ist und in anderen Browsern möglicherweise nicht korrekt dargestellt wird. Das Kinderamt übernimmt keine Haftung für fehlerhafte Ausdrucke.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<div class="popup" id="popup-sprache">
+  <div class="popup-title">Sprachauswahl <span onclick="closePopup()">✕</span></div>
+  <p>Diese Website ist ausschließlich auf Deutsch verfügbar.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Eine Übersetzung in andere Sprachen ist derzeit nicht vorgesehen. Für fremdsprachige Antragsteller: bitte einen zugelassenen Übersetzer hinzuziehen (nicht im Zuständigkeitsbereich des Kinderamts).</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<div class="popup" id="popup-extern">
+  <div class="popup-title">Externer Link <span onclick="closePopup()">✕</span></div>
+  <p>Sie verlassen jetzt die Website des Kinderamts.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Das Kinderamt übernimmt keine Verantwortung für externe Inhalte. Bitte beachten Sie, dass externe Behörden eigene Zuständigkeitsbereiche, Formulare und Wartezeiten haben.</p>
+  <p style="margin-top:6px;font-size:9px;color:#cc0000;">Die Zielseite ist derzeit nicht verfügbar.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">Zurück</button>
+</div>
+
+<div class="popup" id="popup-datenschutz">
+  <div class="popup-title">Datenschutzerklärung <span onclick="closePopup()">✕</span></div>
+  <p>Die Datenschutzerklärung (34 Seiten) ist derzeit in Überarbeitung und online nicht verfügbar.</p>
+  <p style="margin-top:6px;font-size:9px;color:#777;">Sie können die aktuelle Version schriftlich beim Kinderamt anfordern. Bearbeitungszeit: 3–4 Wochen.</p>
+  <button class="btn" style="margin-top:10px;" onclick="closePopup()">OK</button>
+</div>
+
+<script>
+const pages = ['start','antrag','formulare','termin','status','gebuehren','faq','kontakt','sitemap','impressum'];
+const breadcrumbs = {
+  start: 'Startseite',
+  antrag: 'Startseite > Antragsstellung > Erstantrag > Formular KA-ZGB-17b',
+  formulare: 'Startseite > Formulare & Downloads',
+  termin: 'Startseite > Terminvereinbarung',
+  status: 'Startseite > Bearbeitungsstatus',
+  gebuehren: 'Startseite > Gebührenordnung',
+  faq: 'Startseite > Häufige Fragen',
+  kontakt: 'Startseite > Kontakt',
+  sitemap: 'Startseite > Sitemap',
+  impressum: 'Startseite > Impressum'
+};
+
+function showPage(id) {
+  pages.forEach(p => {
+    const pg = document.getElementById('page-'+p);
+    if(pg) pg.classList.remove('active');
+    const nav = document.getElementById('nav-'+p);
+    if(nav) nav.classList.remove('active');
+  });
+  const target = document.getElementById('page-'+id);
+  if(target) target.classList.add('active');
+  const nav = document.getElementById('nav-'+id);
+  if(nav) nav.classList.add('active');
+  document.getElementById('breadcrumb').textContent = breadcrumbs[id] || 'Startseite';
+  const sr = document.getElementById('status-result');
+  if(sr) sr.style.display = 'none';
+  window.scrollTo(0,0);
+}
+
+function showPopup(id) {
+  const el = document.getElementById('popup-'+id);
+  if(el) { el.classList.add('active'); document.getElementById('overlay').classList.add('active'); }
+  const ts = document.getElementById('ts');
+  if(ts) ts.textContent = new Date().toLocaleTimeString('de-DE');
+}
+
+function closePopup() {
+  document.querySelectorAll('.popup').forEach(p => p.classList.remove('active'));
+  document.getElementById('overlay').classList.remove('active');
+}
+
+function showStatus() {
+  const az = document.getElementById('az-input').value;
+  const geb = document.getElementById('geb-input').value;
+  if(!az.trim() || !geb.trim()) { showPopup('status-error'); return; }
+  document.getElementById('status-result').style.display = 'block';
+}
+
+const textarea = document.querySelector('textarea');
+if(textarea) {
+  textarea.addEventListener('input', function() {
+    const cc = document.getElementById('char-count');
+    if(cc) cc.textContent = this.value.length;
+  });
+}
+
+document.getElementById('counter').textContent = 'Fehler: Datenbankverbindung unterbrochen';
+</script>
+</body>
+</html>
